@@ -1,0 +1,75 @@
+// function
+@function px2rem($size, $base: 16px) {
+  @return $size / $base * 1rem;
+}
+
+@function pxlh($size, $line-padding: 4px) {
+  @return $size + $line-padding * 2;
+}
+
+@function color($name, $level: 1) {
+  @if $level < 1 or $level > length(map-get($color, $name)) {
+    $level: 1;
+  }
+  @return nth(map-get($color, $name), $level);
+}
+
+// varialbe
+$font: 12px 16px 24px 32px 48px;
+$color: (
+  primarylist: #d5a26f #b2875c,
+  graylist: #333 #efefef #fefefe #fff,
+);
+
+//extend
+%padding-tb {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+%btn {
+  //重要的是這個，一定要放在最上面
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+%clearfix {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+%primaryBtn {
+  @extend %btn;
+  background: color(primarylist, 1);
+  border: 1px solid color(primarylist, 1);
+  color: #fff;
+}
+%secondaryBtn {
+  @extend %btn;
+  border: 1px solid color(primarylist, 1);
+  color: color(primarylist, 1);
+}
+
+//mixin
+@mixin mask($color: rgba(0, 0, 0, 0.7)) {
+  background-color: $color;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+@mixin font($level: 2) {
+  @if $level<1 or $level > length($font) {
+    $level: 2;
+  }
+  $size: nth($font, $level);
+  font-size: $size;
+  font-size: px2rem($size);
+  line-height: pxlh($size);
+  line-height: px2rem(pxlh($size));
+}

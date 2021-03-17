@@ -1,0 +1,45 @@
+@mixin row($max-width: 100%) {
+  max-width: $max-width;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+.row {
+  @include row();
+}
+
+$grids: (
+  gutter: 16px,
+);
+@mixin colPx($num: 1) {
+  $grids: () !default;
+  $defaults: (
+    columns: 12,
+    gutter: 16px,
+  );
+  $grids: map-merge($defaults, $grids);
+  // merge完結果
+  // $grids:(
+  // columns:12,
+  // gutter: 16px,
+  // )
+  $column: map-get($grids, columns); //12
+  $col: (100% / $column); //100% / 12
+  $gutter: map-get($grids, gutter); //16px
+  width: calc(#{$col * $num} - #{$gutter * 2});
+  float: left;
+  margin-left: $gutter;
+  margin-right: $gutter;
+}
+@for $index from 1 through 12 {
+  .col-#{$index} {
+    @include colPx($index);
+    // outline: 1px solid blue;
+  }
+}
