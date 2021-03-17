@@ -1,8 +1,7 @@
-@mixin row($max-width: 100%) {
-  max-width: $max-width;
+@mixin row() {
   margin: {
-    left: auto;
-    right: auto;
+    left: -16px;
+    right: -16px;
   }
   &:after {
     content: "";
@@ -17,6 +16,7 @@
 $grids: (
   gutter: 16px,
 );
+
 @mixin colPx($num: 1) {
   $grids: () !default;
   $defaults: (
@@ -32,14 +32,14 @@ $grids: (
   $column: map-get($grids, columns); //12
   $col: (100% / $column); //100% / 12
   $gutter: map-get($grids, gutter); //16px
-  width: calc(#{$col * $num} - #{$gutter * 2});
+  width: calc(#{$col * $num});
   float: left;
-  margin-left: $gutter;
-  margin-right: $gutter;
+  padding-left: $gutter;
+  padding-right: $gutter;
 }
 @for $index from 1 through 12 {
   .col-#{$index} {
     @include colPx($index);
-    // outline: 1px solid blue;
+    border: 1px solid blue;
   }
 }

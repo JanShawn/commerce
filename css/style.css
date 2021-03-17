@@ -14,7 +14,7 @@
   transition: all 0.3s;
 }
 
-.header .navbar .nav .nav-item:after, .main .menu .menu-list .title-bar:after {
+.header .navbar a h1:after, .header .navbar .nav:after, .main .menu .menu-list .title-bar:after {
   content: "";
   display: block;
   clear: both;
@@ -51,16 +51,18 @@ a {
 }
 
 .container {
+  border: 1px solid red;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding-right: 16px;
+  padding-left: 16px;
 }
 
 /* grid */
 .row {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: -16px;
+  margin-right: -16px;
 }
 
 .row:after {
@@ -70,87 +72,99 @@ a {
 }
 
 .col-1 {
-  width: calc(8.33333% - 32px);
+  width: calc(8.33333%);
   float: left;
-  margin-left: 16px;
-  margin-right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border: 1px solid blue;
 }
 
 .col-2 {
-  width: calc(16.66667% - 32px);
+  width: calc(16.66667%);
   float: left;
-  margin-left: 16px;
-  margin-right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border: 1px solid blue;
 }
 
 .col-3 {
-  width: calc(25% - 32px);
+  width: calc(25%);
   float: left;
-  margin-left: 16px;
-  margin-right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border: 1px solid blue;
 }
 
 .col-4 {
-  width: calc(33.33333% - 32px);
+  width: calc(33.33333%);
   float: left;
-  margin-left: 16px;
-  margin-right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border: 1px solid blue;
 }
 
 .col-5 {
-  width: calc(41.66667% - 32px);
+  width: calc(41.66667%);
   float: left;
-  margin-left: 16px;
-  margin-right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border: 1px solid blue;
 }
 
 .col-6 {
-  width: calc(50% - 32px);
+  width: calc(50%);
   float: left;
-  margin-left: 16px;
-  margin-right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border: 1px solid blue;
 }
 
 .col-7 {
-  width: calc(58.33333% - 32px);
+  width: calc(58.33333%);
   float: left;
-  margin-left: 16px;
-  margin-right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border: 1px solid blue;
 }
 
 .col-8 {
-  width: calc(66.66667% - 32px);
+  width: calc(66.66667%);
   float: left;
-  margin-left: 16px;
-  margin-right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border: 1px solid blue;
 }
 
 .col-9 {
-  width: calc(75% - 32px);
+  width: calc(75%);
   float: left;
-  margin-left: 16px;
-  margin-right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border: 1px solid blue;
 }
 
 .col-10 {
-  width: calc(83.33333% - 32px);
+  width: calc(83.33333%);
   float: left;
-  margin-left: 16px;
-  margin-right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border: 1px solid blue;
 }
 
 .col-11 {
-  width: calc(91.66667% - 32px);
+  width: calc(91.66667%);
   float: left;
-  margin-left: 16px;
-  margin-right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border: 1px solid blue;
 }
 
 .col-12 {
-  width: calc(100% - 32px);
+  width: calc(100%);
   float: left;
-  margin-left: 16px;
-  margin-right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border: 1px solid blue;
 }
 
 /* comm */
@@ -232,7 +246,6 @@ a {
 .header .navbar {
   height: 64px;
   background: rgba(0, 0, 0, 0.8);
-  padding: 0 16px;
   position: fixed;
   z-index: 999;
   width: 100%;
@@ -240,7 +253,11 @@ a {
   left: 0;
 }
 
-.header .navbar h1 {
+.header .navbar a {
+  display: inline-block;
+}
+
+.header .navbar a h1 {
   float: left;
   color: #fff;
   line-height: 64px;
@@ -313,15 +330,9 @@ a {
   background: #fefefe;
 }
 
-.main .about .container {
-  padding: 0px;
-}
-
 .main .about .row {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 0;
+  margin-left: -16px;
+  margin-right: -16px;
 }
 
 .main .about .row:after {
@@ -410,7 +421,7 @@ a {
 }
 
 .main .reservation {
-  background: url(/images/bg/bg003.jpg) no-repeat fixed center/cover;
+  background: url(../images/bg/bg003.jpg) no-repeat fixed center/cover;
   position: relative;
 }
 
@@ -441,7 +452,6 @@ a {
 
 .main .menu .menu-list .title-bar {
   margin-bottom: 24px;
-  padding: 0 16px;
 }
 
 .main .menu .menu-list .title-bar .title {
@@ -493,6 +503,9 @@ a {
   line-height: 24px;
   line-height: 1.5rem;
   margin-top: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .main .menu .product-item .preview .subtitle {

@@ -65,16 +65,19 @@
   .navbar {
     height: 64px;
     background: rgba(0, 0, 0, 0.8);
-    padding: 0 16px;
     position: fixed;
     z-index: 999;
     width: 100%;
     top: 0;
     left: 0;
-    h1 {
-      float: left;
-      color: #fff;
-      line-height: 64px;
+    a {
+      display: inline-block;
+      h1 {
+        float: left;
+        color: #fff;
+        line-height: 64px;
+        @extend %clearfix;
+      }
     }
     .brand {
       display: inline-block;
@@ -87,9 +90,10 @@
     }
     .nav {
       float: right;
+      @extend %clearfix;
       .nav-item {
         float: left;
-        @extend %clearfix;
+
         .nav-link {
           display: block;
           color: #fff;
@@ -129,12 +133,8 @@
   }
   .about {
     background: color(graylist, 3);
-    .container {
-      padding: 0px;
-    }
     .row {
       @include row();
-      padding-left: 0;
     }
     .about-preview {
       .title {
@@ -200,7 +200,7 @@
     }
   }
   .reservation {
-    background: url(/images/bg/bg003.jpg) no-repeat fixed center/cover;
+    background: url(../images/bg/bg003.jpg) no-repeat fixed center/cover;
     position: relative;
     > .intro {
       position: relative;
@@ -223,7 +223,6 @@
       .title-bar {
         @extend %clearfix;
         margin-bottom: 24px;
-        padding: 0 16px;
         .title {
           @include font(3);
           float: left;
@@ -264,6 +263,10 @@
         .title {
           @include font(2);
           margin-top: 16px;
+          //文字太長處理
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; //只支援單行
         }
         .subtitle {
           @include font(1);
