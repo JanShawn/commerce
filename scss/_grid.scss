@@ -1,3 +1,12 @@
+.container {
+  // border: 1px solid red;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
 @mixin row() {
   margin: {
     left: -16px;
@@ -13,6 +22,7 @@
   @include row();
 }
 
+//user
 $grids: (
   gutter: 16px,
 );
@@ -37,9 +47,51 @@ $grids: (
   padding-left: $gutter;
   padding-right: $gutter;
 }
-@for $index from 1 through 12 {
-  .col-#{$index} {
-    @include colPx($index);
-    border: 1px solid blue;
+
+//user
+$breakpoints: (
+  sm: auto 768px,
+  md: 768px 992px,
+  lg: 992px auto,
+);
+
+@mixin media($name) {
+  $breakpoints: () !default;
+  $defaults: (
+    xs: auto 576px,
+    sm: 576px 768px,
+    md: 768px 992px,
+    lg: 992px 1200px,
+    xl: 1200px auto,
+  );
+
+  $point: map-get($breakpoints, $name) or map-get($defaults, $name);
+
+  @if $point {
+    $min: nth($point, 1);
+    $max: nth($point, 2);
+    @if $min==auto {
+      @media (max-width: $max) {
+        @content;
+      }
+    } @else if $max==auto {
+      @media (min-width: $min) {
+        @content;
+      }
+    } @else {
+      @media (min-width: $min) and (max-width: $max) {
+        @content;
+      }
+    }
+  }
+}
+
+@each $key, $value in $breakpoints {
+  @include media($key) {
+    @for $index from 1 through 12 {
+      .col-#{$key}-#{$index} {
+        @include colPx($index);
+      }
+    }
   }
 }

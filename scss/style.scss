@@ -29,12 +29,17 @@
   margin-bottom: 40px;
   .title {
     @include font(5);
+    @media screen and (max-width: 768px) {
+      @include font(4);
+    }
     color: color(graylist, 1);
     margin-bottom: 24px;
   }
   .para {
     @include font(2);
     color: color(graylist, 1);
+    max-width: 380px;
+    margin: 0 auto;
   }
 }
 .pic {
@@ -56,9 +61,22 @@
 }
 .btn-group-center {
   text-align: center;
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 0 auto;
+    & > * {
+      margin-top: 15px;
+    }
+  }
 }
 .padding-tb {
   @extend %padding-tb;
+  @media screen and (max-width: 768px) {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
 }
 /* header */
 .header {
@@ -70,6 +88,7 @@
     width: 100%;
     top: 0;
     left: 0;
+
     a {
       display: inline-block;
       h1 {
@@ -93,7 +112,7 @@
       @extend %clearfix;
       .nav-item {
         float: left;
-
+        @extend %clearfix;
         .nav-link {
           display: block;
           color: #fff;
@@ -102,9 +121,101 @@
           &:hover {
             color: color(primarylist);
           }
+          @media screen and (max-width: 768px) {
+            display: inline-block;
+          }
         }
         &:not(:last-child) {
           padding-right: 16px;
+          @media screen and (max-width: 768px) {
+            padding-right: 0px;
+          }
+        }
+      }
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      float: right;
+      margin-top: 8px;
+      line-height: 64px;
+      position: relative;
+      @media screen and (max-width: 768px) {
+        display: block;
+      }
+      span {
+        height: 2px;
+        width: 32px;
+        background: color(primarylist, 2);
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        &:nth-child(1) {
+          top: 12px;
+        }
+        &:nth-child(2) {
+          top: 22px;
+        }
+        &:nth-child(3) {
+          top: 32px;
+        }
+      }
+    }
+    .mobileNav {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 0%;
+      background-color: #000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      .nav-item {
+        margin: 30px 0;
+        .nav-link {
+          display: block;
+          color: #fff;
+          transition: color 0.3s;
+          &:hover {
+            color: color(primarylist);
+          }
+        }
+        &:not(:last-child) {
+          padding-right: 16px;
+          @media screen and (max-width: 768px) {
+            padding-right: 0px;
+          }
+        }
+      }
+      .close-btn {
+        width: 48px;
+        height: 48px;
+        position: absolute;
+        right: 16px;
+        top: 8px;
+        span {
+          height: 2px;
+          width: 40px;
+          background: color(primarylist, 2);
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          &:nth-child(1) {
+            transform: translate(-50%, -50%) rotate(45deg);
+          }
+          &:nth-child(2) {
+            transform: translate(-50%, -50%) rotate(-45deg);
+          }
         }
       }
     }
@@ -116,6 +227,10 @@
     background: url(../images/bg/bg001.jpg) no-repeat fixed center/cover;
     padding-top: 225px;
     padding-bottom: 160px;
+    @media screen and (max-width: 768px) {
+      padding-top: 145px;
+      padding-bottom: 80px;
+    }
     position: relative;
     > .mask {
       @include mask();
@@ -126,9 +241,16 @@
       height: 300px;
       width: 300px;
       margin: 0 auto;
+      @media screen and (max-width: 768px) {
+        height: 200px;
+        width: 200px;
+      }
     }
     .btn-primary {
       margin-right: 10px;
+      @media screen and (max-width: 768px) {
+        margin-right: 0px;
+      }
     }
   }
   .about {
@@ -140,7 +262,11 @@
       .title {
         @include font(4);
         color: color(graylist, 1);
-        margin: 24px 0;
+        margin-top: 60px;
+        margin-bottom: 24px;
+        @media screen and (max-width: 768px) {
+          margin-top: 0px;
+        }
       }
       .para {
         @include font(2);
@@ -198,6 +324,13 @@
         }
       }
     }
+    @media screen and (max-width: 992px) {
+      [class^="col-"]:not(:last-child) {
+        .service-item {
+          margin-bottom: 48px;
+        }
+      }
+    }
   }
   .reservation {
     background: url(../images/bg/bg003.jpg) no-repeat fixed center/cover;
@@ -243,6 +376,9 @@
       }
     }
     .product-item {
+      @media screen and (max-width: 992px) {
+        margin-bottom: 48px;
+      }
       .pic {
         width: 100%;
         position: relative;
@@ -344,5 +480,17 @@
   }
   .copyright {
     color: #fff;
+    padding-bottom: 15px;
+  }
+}
+.lg-hidden {
+  display: none;
+  @media screen and (max-width: 992px) {
+    display: block;
+  }
+}
+.lg-display {
+  @media screen and (max-width: 992px) {
+    display: none;
   }
 }
