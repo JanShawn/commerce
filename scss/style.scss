@@ -259,6 +259,7 @@
       @include row();
     }
     .about-preview {
+      @extend %clearfix;
       .title {
         @include font(4);
         color: color(graylist, 1);
@@ -273,6 +274,11 @@
         color: color(graylist, 1);
         margin-bottom: 24px;
         text-align: justify;
+      }
+      .btn-primary {
+        @media screen and (max-width: 768px) {
+          float: right;
+        }
       }
     }
     .pic {
@@ -294,6 +300,7 @@
       }
       .txt {
         padding-top: 16px;
+        @extend %clearfix;
         .title {
           @include font(3);
           color: color(graylist, 1);
@@ -321,6 +328,9 @@
         }
         .btn-secondary {
           padding: 8px;
+          @media screen and (max-width: 768px) {
+            float: right;
+          }
         }
       }
     }
